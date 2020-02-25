@@ -1,0 +1,22 @@
+{
+  "version" : {
+    "Major": 0,
+    "Minor": 0,
+    "Reversion" : 0
+  },
+  "updater.py" : 0,
+  "updater.json": 0,
+  "bz2.dll" : 0,
+  "freetype.dll" : 0,
+  "libpng16.dll" : 0,
+  "Purrmaid.exe" : 0,
+  "sfml-graphics-2.dll": 0,
+  "sfml-system-2.dll": 0,
+  "sfml-window-2.dll": 0,
+  "swifty3.png" : 0,
+  "Swifty_Sprite_Sheet3.png": 0,
+  "tgui.dll" : 0,
+  "TileSet.png": 0,
+  "xubuntu_bg_aluminium.jpg": 0,
+  "zlib1.dll": 0
+}

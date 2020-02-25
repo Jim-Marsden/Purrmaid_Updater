@@ -1,5 +1,9 @@
 import urllib.request
 import os
+import json
+
+json_address = ('https://onedrive.live.com/download?cid=B5984EFBEBCB7914&resid=B5984EFBEBCB7914%21118983&authkey=AAwfa8P4ZYZ0hG0', "version_info.json")
+
 urls = {
     'https://onedrive.live.com/download?cid=B5984EFBEBCB7914&resid=B5984EFBEBCB7914%21118950&authkey=AOXCsz7S9kOh0fU' : "Purrmaid.exe",
     'https://onedrive.live.com/download?cid=B5984EFBEBCB7914&resid=B5984EFBEBCB7914%21118944&authkey=AKuQOGhxUEc_Cdg': 'bz2.dll',
@@ -15,8 +19,19 @@ urls = {
     'https://raw.githubusercontent.com/Jim-Marsden/Purrmaid/master/TileSet.png': 'TileSet.png',
     'https://raw.githubusercontent.com/Jim-Marsden/Purrmaid/master/swifty3.png': 'swifty3.png',
 }
+
+local_json_settings = json.load(open('version_info.json', 'r'))
+
+
+
+urllib.request.urlretrieve(json_address[0], F'host.{json_address[1]}')
+host_json_settings = json.load(open('host.version_info.json', 'r'))
+
 os.system('mkdir purrmaid')
 for url, name in urls.items():
-    print(F'Downloading: {name}...')
-    urllib.request.urlretrieve(url, f'purrmaid/{name}')
-    print("Done...")
+    if local_json_settings[name] == 0 or host_json_settings[name] > local_json_settings[name]:
+        print(F'{name} has started downloading', end='...')
+        urllib.request.urlretrieve(url, f'purrmaid/{name}')
+        print(F'{name} has completed.')
+        local_json_settings[name] = host_json_settings[name]
+
